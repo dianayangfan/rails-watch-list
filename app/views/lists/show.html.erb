@@ -1,0 +1,12 @@
+<h2><%= @list.name %></h2>
+<%# <ul>
+  <li><p>Description:</p></li>
+  <li><p>Function:</p></li>
+  <li><p>Ending:</p></li>
+</ul> %>
+
+<% @list.movies.each do |movie| %>
+<%=  movie.title %>
+<% end %>
+
+<%= link_to "to bookmark a movie", new_list_bookmark_path(@list) %>

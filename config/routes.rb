@@ -7,4 +7,20 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'lists#index'
+  resources :lists, only: %i[lists show new create destroy] do
+    # %i[new create]  = only: [:new, :create]
+    resources :bookmarks, only: %i[new create]
+  end
+    resources :bookmarks, only: :destroy
+
+
+  # get 'lists', to: 'lists#index'
+  # get 'lists/new', to: 'lists#new'
+  # post 'lists', to: 'lists#create'
+  # get 'lists/:id', to: 'lists#show', as: :list
+
+  get 'lists/:id/bookmarks/new', to: 'bookmarks#new'
+  post 'lists/:id/bookmarks', to: 'bookmarks#create'
+  delete 'bookmarks/:id', to: 'bookmarks#destroy'
 end

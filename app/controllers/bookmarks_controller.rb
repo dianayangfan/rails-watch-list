@@ -23,8 +23,8 @@ class BookmarksController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-
   private
+
   def bookmark_params
     params.require(:bookmark).permit(:comment, :movie_id)
   end
